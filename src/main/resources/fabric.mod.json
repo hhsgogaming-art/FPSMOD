@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "pulsefps",
+  "version": "${version}",
+  "name": "PulseFPS",
+  "description": "A conservative client-side performance mod starter designed to coexist with Sodium.",
+  "authors": ["PulseFPS contributors"],
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "dev.pulsefps.PulseFPSClient"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": "~1.21.11",
+    "java": ">=21",
+    "fabric-api": "*"
+  },
+  "suggests": {
+    "sodium": "*"
+  }
+}
