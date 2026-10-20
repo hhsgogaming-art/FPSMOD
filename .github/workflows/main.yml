@@ -1,4 +1,4 @@
-name: Build JAR
+name: Build Fabric Mod
 
 on:
   push:
@@ -9,26 +9,27 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up JDK 17
+      - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: '17'
-          cache: gradle
+          java-version: '21'
 
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
 
       - name: Build with Gradle
-        run: ./gradlew build --no-daemon
+        run: gradle build --no-daemon --stacktrace
 
       - name: Upload built JAR
         uses: actions/upload-artifact@v4
         with:
-          name: mod-jar
+          name: PulseFPS-jar
           path: build/libs/*.jar
           if-no-files-found: error
